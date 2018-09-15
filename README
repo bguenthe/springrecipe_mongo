@@ -1,0 +1,3 @@
+#Circle CI mit Google eingeloged
+
+es wird eine embedded mongo db benutzt (siehe build.gradle und application.properties)

@@ -1,0 +1,51 @@
+buildscript {
+	ext.kotlin_version = '1.2.10'
+	ext {
+		springBootVersion = '2.0.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'de.bguenthe'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.projectlombok:lombok')
+    compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+    compile group: 'cz.jirutka.spring', name: 'embedmongo-spring', version: '1.3.1'
+	runtime('org.springframework.boot:spring-boot-devtools')
+	runtime('com.h2database:h2')
+	runtime('org.webjars:bootstrap:3.3.7-1')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+compileKotlin {
+	kotlinOptions {
+		jvmTarget = "1.8"
+	}
+}
+compileTestKotlin {
+	kotlinOptions {
+		jvmTarget = "1.8"
+	}
+}
